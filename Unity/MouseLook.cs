@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    // Êó±êÁéÃô¶È
+    // é¼ æ ‡çµæ•åº¦
     public float mouseSensitivity = 100f;
 
-    // Íæ¼ÒµÄTransform×é¼ş
+    // ç©å®¶çš„Transformç»„ä»¶
     public Transform playerBody;
 
-    // ´¹Ö±ÊÓ½ÇµÄĞı×ª½Ç¶È
+    // å‚ç›´è§†è§’çš„æ—‹è½¬è§’åº¦
     private float xRotation = 0f;
 
     void Start()
     {
-        // Ëø¶¨Êó±ê¹â±ê
+        // é”å®šé¼ æ ‡å…‰æ ‡
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        // »ñÈ¡Êó±êÔÚË®Æ½ºÍ´¹Ö±·½ÏòÉÏµÄÒÆ¶¯Á¿
+        // è·å–é¼ æ ‡åœ¨æ°´å¹³å’Œå‚ç›´æ–¹å‘ä¸Šçš„ç§»åŠ¨é‡
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // ¼ÆËã´¹Ö±ÊÓ½ÇµÄĞı×ª½Ç¶È£¬²¢½øĞĞÏŞÖÆ
+        // è®¡ç®—å‚ç›´è§†è§’çš„æ—‹è½¬è§’åº¦ï¼Œå¹¶è¿›è¡Œé™åˆ¶
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // Ó¦ÓÃ´¹Ö±ÊÓ½ÇµÄĞı×ª
+        // åº”ç”¨å‚ç›´è§†è§’çš„æ—‹è½¬
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        // Ó¦ÓÃË®Æ½ÊÓ½ÇµÄĞı×ª
+        // åº”ç”¨æ°´å¹³è§†è§’çš„æ—‹è½¬
         playerBody.Rotate(Vector3.up * mouseX);
     }
 }
