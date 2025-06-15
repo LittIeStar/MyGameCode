@@ -12,14 +12,14 @@ public class PauseMenu : MonoBehaviour
 
     public bool isPaused
     {
-        get { return _isPaused; } // Ê¹ÓÃË½ÓĞ×Ö¶Î´æ´¢Öµ
+        get { return _isPaused; } // ä½¿ç”¨ç§æœ‰å­—æ®µå­˜å‚¨å€¼
         private set { _isPaused = value; }
     }
-    private bool _isPaused = false; // Ë½ÓĞ×Ö¶Î
+    private bool _isPaused = false; // ç§æœ‰å­—æ®µ
 
     private void Awake()
     {
-        //ÔÚÓÎÏ·Æô¶¯µÄÊ±ºò½«×ÔÉíÉèÖÃÎª·Ç¼¤»î×´Ì¬
+        //åœ¨æ¸¸æˆå¯åŠ¨çš„æ—¶å€™å°†è‡ªèº«è®¾ç½®ä¸ºéæ¿€æ´»çŠ¶æ€
         gameObject.SetActive(false);
     }
 
