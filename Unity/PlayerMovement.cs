@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Íæ¼ÒÒÆ¶¯ËÙ¶È
+    // ç©å®¶ç§»åŠ¨é€Ÿåº¦
     public float speed = 5f;
-    // Íæ¼ÒÌøÔ¾Á¦Á¿
+    // ç©å®¶è·³è·ƒåŠ›é‡
     public float jumpForce = 5f;
-    // ÓÃÓÚ¼ì²âµØÃæµÄÉäÏß³¤¶È
+    // ç”¨äºæ£€æµ‹åœ°é¢çš„å°„çº¿é•¿åº¦
     public float groundCheckDistance = 0.1f;
-    // µØÃæ²ã£¬ÓÃÓÚÉäÏß¼ì²âÅĞ¶ÏÊÇ·ñÔÚµØÃæ
+    // åœ°é¢å±‚ï¼Œç”¨äºå°„çº¿æ£€æµ‹åˆ¤æ–­æ˜¯å¦åœ¨åœ°é¢
     public LayerMask groundLayer;
 
     private Rigidbody rb;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // »ñÈ¡Íæ¼Ò¶ÔÏóµÄ Rigidbody ×é¼ş
+        // è·å–ç©å®¶å¯¹è±¡çš„ Rigidbody ç»„ä»¶
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -24,24 +24,24 @@ public class PlayerMovement : MonoBehaviour
             enabled = false;
             return;
         }
-        // ¶³½á¸ÕÌåµÄĞı×ª£¬·ÀÖ¹Íæ¼ÒÔÚÒÆ¶¯¹ı³ÌÖĞÒâÍâĞı×ª
+        // å†»ç»“åˆšä½“çš„æ—‹è½¬ï¼Œé˜²æ­¢ç©å®¶åœ¨ç§»åŠ¨è¿‡ç¨‹ä¸­æ„å¤–æ—‹è½¬
         rb.freezeRotation = false;
     }
 
     void FixedUpdate()
     {
         float deltaTime = Time.fixedDeltaTime;
-        // ¼ì²éÍæ¼ÒÊÇ·ñÔÚµØÃæÉÏ
+        // æ£€æŸ¥ç©å®¶æ˜¯å¦åœ¨åœ°é¢ä¸Š
         CheckGround();
-        // ´¦ÀíÍæ¼ÒµÄÒÆ¶¯
+        // å¤„ç†ç©å®¶çš„ç§»åŠ¨
         MovePlayer(deltaTime);
-        // ´¦ÀíÍæ¼ÒµÄÌøÔ¾
+        // å¤„ç†ç©å®¶çš„è·³è·ƒ
         HandleJump();
     }
 
     void CheckGround()
     {
-        // ´ÓÍæ¼Ò¶ÔÏóµÄµ×²¿ÏòÏÂ·¢ÉäÒ»ÌõÉäÏß
+        // ä»ç©å®¶å¯¹è±¡çš„åº•éƒ¨å‘ä¸‹å‘å°„ä¸€æ¡å°„çº¿
         Vector3 rayOrigin = transform.position - new Vector3(0, GetComponent<Collider>().bounds.extents.y, 0);
         RaycastHit hit;
         isGrounded = Physics.Raycast(rayOrigin, Vector3.down, out hit, groundCheckDistance, groundLayer);
@@ -49,27 +49,27 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer(float deltaTime)
     {
-        // »ñÈ¡Ë®Æ½ºÍ´¹Ö±·½ÏòµÄÊäÈë
+        // è·å–æ°´å¹³å’Œå‚ç›´æ–¹å‘çš„è¾“å…¥
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
-        // ¼ÆËãÒÆ¶¯·½ÏòÏòÁ¿£¨Ïà¶ÔÓÚÍæ¼Ò×ÔÉí×ø±êÏµ£©
+        // è®¡ç®—ç§»åŠ¨æ–¹å‘å‘é‡ï¼ˆç›¸å¯¹äºç©å®¶è‡ªèº«åæ ‡ç³»ï¼‰
         Vector3 movement = transform.forward * verticalInput + transform.right * horizontalInput;
 
-        // ¼ÆËãĞÂµÄÒÆ¶¯ËÙ¶ÈÏòÁ¿
+        // è®¡ç®—æ–°çš„ç§»åŠ¨é€Ÿåº¦å‘é‡
         Vector3 targetVelocity = movement * speed;
         targetVelocity.y = rb.velocity.y;
 
-        // Ê¹ÓÃ Rigidbody µÄ MovePosition ·½·¨¸üĞÂÍæ¼ÒÎ»ÖÃ
+        // ä½¿ç”¨ Rigidbody çš„ MovePosition æ–¹æ³•æ›´æ–°ç©å®¶ä½ç½®
         rb.MovePosition(rb.position + targetVelocity * deltaTime);
     }
 
     void HandleJump()
     {
-        // µ±Íæ¼ÒÔÚµØÃæÉÏÇÒ°´ÏÂÌøÔ¾¼ü£¨Ä¬ÈÏÊÇ¿Õ¸ñ¼ü£©Ê±Ö´ĞĞÌøÔ¾²Ù×÷
+        // å½“ç©å®¶åœ¨åœ°é¢ä¸Šä¸”æŒ‰ä¸‹è·³è·ƒé”®ï¼ˆé»˜è®¤æ˜¯ç©ºæ ¼é”®ï¼‰æ—¶æ‰§è¡Œè·³è·ƒæ“ä½œ
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            // ¸ø¸ÕÌåÊ©¼ÓÒ»¸öÏòÉÏµÄ³åÁ¿ÊµÏÖÌøÔ¾
+            // ç»™åˆšä½“æ–½åŠ ä¸€ä¸ªå‘ä¸Šçš„å†²é‡å®ç°è·³è·ƒ
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             Debug.Log("Jump");
         }
