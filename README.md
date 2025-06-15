@@ -37,7 +37,7 @@
 - 本项目主要供个人学习与开发记录使用，暂未计划全面开源功能或商业化。
 ##### 🙋‍♂️ 关于我
 - 重度游戏爱好者，碧蓝档案，明日方舟，PS，PC，NS玩家
-- 本人b站：[@集气瓶子](https://space.bilibili.com/667245600)
+- Twitter:[@MikuMiku3648](https://x.com/MikuMiku3648)
 
 ---
 
