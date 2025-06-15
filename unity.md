@@ -7,7 +7,7 @@
 - ### [逻辑相关](逻辑相关)
 
 ## 角色行动
-- **PlayerMovement**：基础角色控制，实现前后左右移动和跳跃（需要 Rigidbody）。
+- **(PlayerMovement)[./Unity/PlayerMovement.cs]**：基础角色控制，实现前后左右移动和跳跃（需要 Rigidbody）。
 
 ## 摄像机控制
 - **MouseLook**：使用鼠标控制游戏视角的移动。
