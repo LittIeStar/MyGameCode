@@ -17,7 +17,7 @@ public class CustomFontText : MonoBehaviour
     private float timer = 0f;
 
     public PauseMenu pauseMenu;
-    // 控制需要触发暂停的文本索引
+    // 鎺у埗闇�瑕佽Е鍙戞殏鍋滅殑鏂囨湰绱㈠紩
     public int pauseTriggerIndex = 2;
 
     void Start()
