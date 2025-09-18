@@ -5,4 +5,5 @@ public class DialogueData : ScriptableObject
 {
     [TextArea(2, 5)]
     public string[] lines; // 只存剧情文本
+
 }
